@@ -12,6 +12,7 @@ ksp = "1.9.22-1.0.16"
 composeDestinations = "1.9.62"
 pagecurl = "1.5.1"
 koin = "3.5.0"
+napier = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +34,7 @@ composeDestinations-ksp = { module = "io.github.raamcosta.compose-destinations:k
 oleksandrbalan-pagecurl = { module = "io.github.oleksandrbalan:pagecurl", version.ref = "pagecurl" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

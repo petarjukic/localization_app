@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">LocalizationApp</string>
+
+    <string name="page_curl_screen">Page Curl Screen</string>
+    <string name="home_text"> ENG: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nibh enim, pellentesque in dui id, rutrum semper nibh</string>
+    <string name="home_screen_two">ENG: This is screen 2.</string>
+    <string name="home_screen_three">ENG: This is screen 3.</string>
+    <string name="error_message">Error Message</string>
 </resources>
