@@ -1,5 +1,6 @@
 package com.example.localizationapp.di
 
+import com.example.localizationapp.preferences.SharedPreferencesManager
 import com.example.localizationapp.view_model.HomeScreenViewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -14,9 +15,9 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) = startKoin {
 }
 
 fun viewModelModule() = module {
-    factory { HomeScreenViewModel() }
+    factory { HomeScreenViewModel(get()) }
 }
 
 fun managersModule() = module {
-
+    single { SharedPreferencesManager(get()) }
 }

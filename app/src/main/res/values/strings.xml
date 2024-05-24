@@ -6,4 +6,7 @@
     <string name="home_screen_two">ENG: This is screen 2.</string>
     <string name="home_screen_three">ENG: This is screen 3.</string>
     <string name="error_message">Error Message</string>
+    <string name="english_language">English</string>
+    <string name="german_language">German</string>
+    <string name="spanish_language">Spanish</string>
 </resources>

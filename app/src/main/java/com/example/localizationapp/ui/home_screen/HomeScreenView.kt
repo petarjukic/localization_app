@@ -3,9 +3,11 @@ package com.example.localizationapp.ui.home_screen
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -17,6 +19,8 @@ import com.example.localizationapp.R
 import com.example.localizationapp.ui.destinations.PageCurlScreenDestination
 import com.example.localizationapp.ui.tab_bar.TabBar
 import com.example.localizationapp.ui.theme.Dimensions
+import com.example.localizationapp.util.enums.AppLanguages
+import com.example.localizationapp.util.extensions.title
 import com.example.localizationapp.view_model.HomeScreenViewModel
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -48,6 +52,36 @@ object HomeScreenView {
                     TextButton(onClick = { navigator.navigate(PageCurlScreenDestination) }) {
                         Text(text = stringResource(id = R.string.page_curl_screen))
                     }
+                }
+                AnimatedVisibility(visible = homeScreenState.value.selectedIndex == 1) {
+                    LanguageChooser {
+
+                    }
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun LanguageChooser(onLanguageClick: (Int) -> Unit) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = Dimensions.PADDING_BIG),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            AppLanguages.entries.forEachIndexed { index, appLanguage ->
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Checkbox(
+                        checked = false,
+                        onCheckedChange = { }
+                    )
+                    Text(text = appLanguage.title())
                 }
             }
         }

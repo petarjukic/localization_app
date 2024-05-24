@@ -30,10 +30,8 @@ fun TabBar(selectedIndex: Int, onIndexClick: (Int) -> Unit) {
                 Tab(
                     text = {
                         Text(
-                            text = title, style = TextStyle(
-                                fontSize = 16.sp,
-                                color = Color.LightGray
-                            )
+                            text = title,
+                            style = TextStyle(fontSize = 16.sp)
                         )
                     },
                     selected = selectedIndex == index,
