@@ -67,4 +67,8 @@ dependencies {
 
     implementation(libs.composeDestinations.core)
     ksp(libs.composeDestinations.ksp)
+
+    implementation(libs.oleksandrbalan.pagecurl)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.core)
 }
