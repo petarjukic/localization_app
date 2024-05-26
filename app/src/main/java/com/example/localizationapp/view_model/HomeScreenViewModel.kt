@@ -19,17 +19,6 @@ class HomeScreenViewModel(
 
     val homeScreenState = _homeScreenState.asStateFlow()
 
-    init {
-        viewModelScope.launch {
-            val language = sharedPreferencesManager.getString(
-                key = Preference.AppLanguage.key,
-                defaultValue = AppLanguages.ENGLISH.name
-            )
-
-            _homeScreenState.update { state -> state.copy(selectedLanguage = language) }
-        }
-    }
-
     fun updateSelectedIndex(index: Int) {
         _homeScreenState.update { state ->
             state.copy(selectedIndex = index)
