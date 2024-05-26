@@ -10,12 +10,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
+import com.example.localizationapp.R
 
 @Composable
 fun TabBar(selectedIndex: Int, onIndexClick: (Int) -> Unit) {
-    val tabs = listOf("Home", "Screen 2", "Screen 3")
+    val tabs = listOf(
+        stringResource(id = R.string.home),
+        stringResource(id = R.string.screen_two),
+        stringResource(id = R.string.screen_three)
+    )
 
     Column(modifier = Modifier.fillMaxWidth()) {
         TabRow(selectedTabIndex = selectedIndex, indicator = {

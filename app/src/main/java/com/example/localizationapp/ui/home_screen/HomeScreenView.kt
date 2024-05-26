@@ -54,8 +54,8 @@ object HomeScreenView {
                     }
                 }
                 AnimatedVisibility(visible = homeScreenState.value.selectedIndex == 1) {
-                    LanguageChooser {
-
+                    LanguageChooser(selectedLanguage = homeScreenState.value.selectedLanguage) {
+                        homeScreenViewModel.setAppLanguage(language = AppLanguages.entries[it].name)
                     }
                 }
             }
@@ -63,7 +63,7 @@ object HomeScreenView {
     }
 
     @Composable
-    fun LanguageChooser(onLanguageClick: (Int) -> Unit) {
+    fun LanguageChooser(selectedLanguage: String, onLanguageClick: (Int) -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -78,8 +78,8 @@ object HomeScreenView {
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Checkbox(
-                        checked = false,
-                        onCheckedChange = { }
+                        checked = AppLanguages.valueOf(selectedLanguage) == appLanguage,
+                        onCheckedChange = { onLanguageClick.invoke(index) }
                     )
                     Text(text = appLanguage.title())
                 }

@@ -2,10 +2,13 @@
 <resources>
     <string name="page_curl_screen">Bildschirm zum Aufrollen der Seite</string>
     <string name="home_text"> DE: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nibh enim, pellentesque in dui id, rutrum semper nibh</string>
-    <string name="home_screen_two">ENG: Das ist Bildschirm 2.</string>
-    <string name="home_screen_three">ENG: Das ist Bildschirm 3.</string>
+    <string name="home_screen_two">DE: Das ist Bildschirm 2.</string>
+    <string name="home_screen_three">DE: Das ist Bildschirm 3.</string>
     <string name="error_message">Fehlermeldung</string>
     <string name="english_language">Englisch</string>
     <string name="german_language">Deutsch</string>
     <string name="spanish_language">Spanisch</string>
+    <string name="home">Heim</string>
+    <string name="screen_two">Bildschirm 2</string>
+    <string name="screen_three">Bildschirm 3</string>
 </resources>

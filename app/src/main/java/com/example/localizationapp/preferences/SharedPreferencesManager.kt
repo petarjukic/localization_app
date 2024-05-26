@@ -14,6 +14,10 @@ class SharedPreferencesManager(context: Context) {
     }
 
     fun getString(key: String, defaultValue: String) = sharedPreferences.getString(key, defaultValue) ?: defaultValue
+
+    fun removeValue(key: String) {
+        sharedPreferences.edit().remove(key).apply()
+    }
 }
 
 enum class Preference(val key: String) {

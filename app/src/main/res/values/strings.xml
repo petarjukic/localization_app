@@ -9,4 +9,7 @@
     <string name="english_language">English</string>
     <string name="german_language">German</string>
     <string name="spanish_language">Spanish</string>
+    <string name="home">Home</string>
+    <string name="screen_two">Screen 2</string>
+    <string name="screen_three">Screen 3</string>
 </resources>
