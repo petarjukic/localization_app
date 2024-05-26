@@ -30,34 +30,47 @@ object HomeScreenView {
         val homeScreenState = homeScreenViewModel.homeScreenState.collectAsState()
 
         Column(modifier = Modifier.fillMaxSize()) {
-            TabBar(selectedIndex = homeScreenState.value.selectedIndex) {
-                homeScreenViewModel.updateSelectedIndex(index = it)
+            Content(
+                selectedIndex = homeScreenState.value.selectedIndex,
+                selectedLanguage = homeScreenState.value.selectedLanguage,
+                onTabClick = { homeScreenViewModel.updateSelectedIndex(index = it) },
+                onPageCurlNavigation = { navigator.navigate(PageCurlScreenDestination) },
+                onLanguageChanges = { homeScreenViewModel.setAppLanguage(language = AppLanguages.entries[it].name) }
+            )
+        }
+    }
+
+    @Composable
+    fun Content(
+        selectedIndex: Int,
+        selectedLanguage: String,
+        onTabClick: (Int) -> Unit,
+        onPageCurlNavigation: () -> Unit,
+        onLanguageChanges: (Int) -> Unit
+    ) {
+        TabBar(selectedIndex = selectedIndex) { onTabClick.invoke(it) }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = Dimensions.PADDING_DEFAULT, horizontal = Dimensions.PADDING_MINIMUM),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = when (selectedIndex) {
+                    0 -> stringResource(R.string.home_text)
+                    1 -> stringResource(id = R.string.home_screen_two)
+                    2 -> stringResource(id = R.string.home_screen_three)
+                    else -> stringResource(id = R.string.error_message)
+                }
+            )
+            AnimatedVisibility(visible = selectedIndex == 0) {
+                TextButton(onClick = { onPageCurlNavigation.invoke() }) {
+                    Text(text = stringResource(id = R.string.page_curl_screen))
+                }
             }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = Dimensions.PADDING_DEFAULT, horizontal = Dimensions.PADDING_MINIMUM),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = when (homeScreenState.value.selectedIndex) {
-                        0 -> stringResource(R.string.home_text)
-                        1 -> stringResource(id = R.string.home_screen_two)
-                        2 -> stringResource(id = R.string.home_screen_three)
-                        else -> stringResource(id = R.string.error_message)
-                    }
-                )
-                AnimatedVisibility(visible = homeScreenState.value.selectedIndex == 0) {
-                    TextButton(onClick = { navigator.navigate(PageCurlScreenDestination) }) {
-                        Text(text = stringResource(id = R.string.page_curl_screen))
-                    }
-                }
-                AnimatedVisibility(visible = homeScreenState.value.selectedIndex == 1) {
-                    LanguageChooser(selectedLanguage = homeScreenState.value.selectedLanguage) {
-                        homeScreenViewModel.setAppLanguage(language = AppLanguages.entries[it].name)
-                    }
-                }
+            AnimatedVisibility(visible = selectedIndex == 1) {
+                LanguageChooser(selectedLanguage = selectedLanguage) { onLanguageChanges.invoke(it) }
             }
         }
     }
