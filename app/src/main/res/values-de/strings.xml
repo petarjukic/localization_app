@@ -11,4 +11,9 @@
     <string name="home">Heim</string>
     <string name="screen_two">Bildschirm 2</string>
     <string name="screen_three">Bildschirm 3</string>
+    <string name="next_page">Nächste Seite</string>
+    <string name="previous_page">vorherige Seite</string>
+    <string name="screen_one_text">Bildschirm 1 Text</string>
+    <string name="screen_two_text">Bildschirm 2 Text</string>
+    <string name="screen_three_text">Bildschirm 3 Text</string>
 </resources>
