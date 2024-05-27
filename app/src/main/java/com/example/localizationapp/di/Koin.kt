@@ -21,5 +21,5 @@ fun viewModelModule() = module {
 
 fun managersModule() = module {
     single { SharedPreferencesManager(get()) }
-    single { LanguageSetterManager(get()) }
+    single { LanguageSetterManager(get(), get()) }
 }
