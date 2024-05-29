@@ -20,4 +20,8 @@
     <string name="screen_three_text">Screen 3 text</string>
 
     <string name="image">Image</string>
+
+    <string name="set_language_app">Set the language of the app</string>
+    <string name="croatian_language">Croatian</string>
+    <string name="app_language_screen">App language screen</string>
 </resources>

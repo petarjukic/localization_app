@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.localizationapp.R
+import com.example.localizationapp.ui.destinations.AppLanguageScreenDestination
 import com.example.localizationapp.ui.destinations.PageCurlScreenDestination
 import com.example.localizationapp.ui.tab_bar.TabBar
 import com.example.localizationapp.ui.theme.Dimensions
@@ -35,7 +36,8 @@ object HomeScreenView {
                 selectedLanguage = homeScreenState.value.selectedLanguage,
                 onTabClick = { homeScreenViewModel.updateSelectedIndex(index = it) },
                 onPageCurlNavigation = { navigator.navigate(PageCurlScreenDestination) },
-                onLanguageChanges = { homeScreenViewModel.setAppLanguage(language = AppLanguages.entries[it].name) }
+                onLanguageChanges = { homeScreenViewModel.setAppLanguage(language = AppLanguages.entries[it].name) },
+                onSetAppLanguageClick = { navigator.navigate(AppLanguageScreenDestination) }
             )
         }
     }
@@ -46,7 +48,8 @@ object HomeScreenView {
         selectedLanguage: String,
         onTabClick: (Int) -> Unit,
         onPageCurlNavigation: () -> Unit,
-        onLanguageChanges: (Int) -> Unit
+        onLanguageChanges: (Int) -> Unit,
+        onSetAppLanguageClick: () -> Unit
     ) {
         TabBar(selectedIndex = selectedIndex) { onTabClick.invoke(it) }
         Column(
@@ -68,6 +71,9 @@ object HomeScreenView {
                 TextButton(onClick = { onPageCurlNavigation.invoke() }) {
                     Text(text = stringResource(id = R.string.page_curl_screen))
                 }
+            }
+            TextButton(onClick = { onSetAppLanguageClick.invoke() }) {
+                Text(text = stringResource(id = R.string.app_language_screen))
             }
             AnimatedVisibility(visible = selectedIndex == 1) {
                 LanguageChooser(selectedLanguage = selectedLanguage) { onLanguageChanges.invoke(it) }
